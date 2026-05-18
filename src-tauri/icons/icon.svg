@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Droid Switch app icon">
+  <defs>
+    <linearGradient id="bg" x1="150" y1="90" x2="860" y2="940" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#172333"/>
+      <stop offset="0.48" stop-color="#0d141f"/>
+      <stop offset="1" stop-color="#070a10"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="332" cy="260" r="640" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1dd7c2" stop-opacity="0.5"/>
+      <stop offset="0.42" stop-color="#0f8ea0" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#061017" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="150" y1="110" x2="890" y2="910" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6ff8ec" stop-opacity="0.7"/>
+      <stop offset="0.5" stop-color="#1f8091" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#05080d" stop-opacity="0.85"/>
+    </linearGradient>
+    <linearGradient id="head" x1="286" y1="276" x2="738" y2="754" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#203248"/>
+      <stop offset="0.52" stop-color="#111c2a"/>
+      <stop offset="1" stop-color="#0a0f17"/>
+    </linearGradient>
+    <linearGradient id="face" x1="322" y1="358" x2="708" y2="650" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#31465f"/>
+      <stop offset="0.55" stop-color="#172535"/>
+      <stop offset="1" stop-color="#0c131d"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="250" y1="260" x2="782" y2="700" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7cfdf3"/>
+      <stop offset="0.45" stop-color="#20d7c8"/>
+      <stop offset="1" stop-color="#0b9fba"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="650" y1="314" x2="790" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffd271"/>
+      <stop offset="1" stop-color="#ff9d2e"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="28" stdDeviation="34" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+    <filter id="cyanGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#2fe8db" flood-opacity="0.72"/>
+    </filter>
+    <filter id="amberGlow" x="-70%" y="-70%" width="240%" height="240%">
+      <feDropShadow dx="0" dy="0" stdDeviation="12" flood-color="#ffb43d" flood-opacity="0.7"/>
+    </filter>
+    <clipPath id="iconClip">
+      <rect x="64" y="64" width="896" height="896" rx="212"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#iconClip)">
+    <rect x="64" y="64" width="896" height="896" rx="212" fill="url(#bg)"/>
+    <rect x="64" y="64" width="896" height="896" rx="212" fill="url(#glow)"/>
+    <path d="M132 726C292 628 422 692 514 782C628 894 780 900 922 738V960H64V792C84 772 106 750 132 726Z" fill="#0d2933" opacity="0.42"/>
+    <path d="M118 268C282 136 504 96 728 152C798 170 858 196 920 234V64H64V330C82 310 100 290 118 268Z" fill="#28445f" opacity="0.28"/>
+  </g>
+
+  <rect x="70" y="70" width="884" height="884" rx="206" fill="none" stroke="url(#rim)" stroke-width="12"/>
+  <rect x="90" y="90" width="844" height="844" rx="190" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="4"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M330 324L282 254" fill="none" stroke="#28445f" stroke-width="30" stroke-linecap="round"/>
+    <path d="M694 324L742 254" fill="none" stroke="#28445f" stroke-width="30" stroke-linecap="round"/>
+    <circle cx="272" cy="240" r="26" fill="url(#cyan)" opacity="0.95"/>
+    <circle cx="752" cy="240" r="26" fill="url(#amber)" opacity="0.95"/>
+
+    <rect x="244" y="296" width="536" height="432" rx="150" fill="url(#head)"/>
+    <rect x="274" y="326" width="476" height="372" rx="124" fill="url(#face)" stroke="#4cf0e3" stroke-opacity="0.36" stroke-width="8"/>
+    <path d="M326 376C396 336 628 336 698 376" fill="none" stroke="#ffffff" stroke-opacity="0.13" stroke-width="12" stroke-linecap="round"/>
+  </g>
+
+  <g filter="url(#cyanGlow)">
+    <circle cx="404" cy="474" r="36" fill="url(#cyan)"/>
+    <circle cx="620" cy="474" r="36" fill="url(#cyan)"/>
+    <rect x="404" y="594" width="216" height="22" rx="11" fill="#79fff5" opacity="0.8"/>
+  </g>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M214 552C300 468 386 428 500 428H584" stroke="#172636" stroke-width="72" opacity="0.88"/>
+    <path d="M214 552C300 468 386 428 500 428H584" stroke="url(#cyan)" stroke-width="34" filter="url(#cyanGlow)"/>
+    <path d="M584 370L676 428L584 486" fill="none" stroke="url(#cyan)" stroke-width="34" filter="url(#cyanGlow)"/>
+
+    <path d="M810 552C724 636 638 676 524 676H440" stroke="#172636" stroke-width="72" opacity="0.88"/>
+    <path d="M810 552C724 636 638 676 524 676H440" stroke="url(#amber)" stroke-width="34" filter="url(#amberGlow)"/>
+    <path d="M440 618L348 676L440 734" fill="none" stroke="url(#amber)" stroke-width="34" filter="url(#amberGlow)"/>
+  </g>
+
+  <g>
+    <circle cx="214" cy="552" r="30" fill="#0d141f" stroke="url(#cyan)" stroke-width="16" filter="url(#cyanGlow)"/>
+    <circle cx="810" cy="552" r="30" fill="#0d141f" stroke="url(#amber)" stroke-width="16" filter="url(#amberGlow)"/>
+    <circle cx="512" cy="428" r="18" fill="#0d141f" stroke="#95fff8" stroke-width="10"/>
+    <circle cx="512" cy="676" r="18" fill="#0d141f" stroke="#ffc75e" stroke-width="10"/>
+  </g>
+
+  <path d="M176 848C290 912 422 934 558 914C690 894 808 836 902 740" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="10" stroke-linecap="round"/>
+</svg>

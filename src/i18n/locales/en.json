@@ -1,0 +1,116 @@
+{
+  "header": {
+    "subtitle": "Manage Factory CLI provider presets",
+    "factoryLabel": "Factory:",
+    "modelCount_one": "{{count}} model",
+    "modelCount_other": "{{count}} models",
+    "noFactorySettings": "No user-level Factory settings found",
+    "loading": "Loading…"
+  },
+  "sidebar": {
+    "new": "+ New",
+    "templates": "Templates",
+    "import": "Import",
+    "backups": "Backups"
+  },
+  "empty": {
+    "hint": "Select a preset on the left, or create a new one.",
+    "subHint": "Switching updates your user-level Factory settings and keeps a backup."
+  },
+  "toast": {
+    "saved": "Saved",
+    "created": "Created",
+    "switched": "Switched",
+    "deleted": "Deleted",
+    "imported_one": "Imported {{count}} preset from Factory settings",
+    "imported_other": "Imported {{count}} presets from Factory settings",
+    "importedNoChange": "No new presets to import"
+  },
+  "details": {
+    "switchToThis": "Switch to this",
+    "active": "ACTIVE",
+    "edit": "Edit",
+    "delete": "Delete",
+    "provider": "Provider",
+    "displayName": "Display name",
+    "baseUrl": "Base URL",
+    "apiKey": "API key",
+    "maxOutputTokens": "Max output tokens",
+    "noImageSupport": "No image support",
+    "yes": "yes",
+    "updated": "Updated"
+  },
+  "list": {
+    "empty": "No presets yet.",
+    "emptyHint": "Click \"New\" to add one, or \"Import\" to pull from your Factory settings.",
+    "switch": "Switch",
+    "delete": "Delete"
+  },
+  "form": {
+    "label": "Label",
+    "labelPlaceholder": "My OpenAI",
+    "provider": "Provider",
+    "displayName": "Display name",
+    "displayNamePlaceholder": "GPT-4o",
+    "modelId": "Model ID",
+    "modelIdPlaceholder": "gpt-4o",
+    "baseUrl": "Base URL",
+    "baseUrlPlaceholder": "https://api.openai.com/v1",
+    "apiKey": "API key (supports ${ENV_VAR})",
+    "apiKeyPlaceholder": "${OPENAI_API_KEY}",
+    "maxOutputTokens": "Max output tokens (optional)",
+    "noImageSupport": "No image support",
+    "envSet": "set",
+    "envMissing": "missing",
+    "cancel": "Cancel",
+    "save": "Save",
+    "create": "Create",
+    "errors": {
+      "labelRequired": "Label is required",
+      "modelRequired": "Model is required",
+      "displayNameRequired": "displayName is required",
+      "baseUrlRequired": "baseUrl is required",
+      "apiKeyRequired": "apiKey is required"
+    }
+  },
+  "confirm": {
+    "delete": "Delete preset \"{{label}}\"? This will not modify the active Factory settings.",
+    "restore": "Restore your active Factory settings from {{filename}}? Current settings will be backed up first."
+  },
+  "dialog": {
+    "chooseTemplate": "Choose a template",
+    "use": "Use",
+    "backups": "Backups",
+    "loading": "Loading…",
+    "noBackups": "No backups yet. Backups are created on each switch.",
+    "restore": "Restore",
+    "restoring": "Restoring…",
+    "bytes": "{{count}} bytes"
+  },
+  "presets": {
+    "anthropic": {
+      "label": "Anthropic — Claude Sonnet 4.6",
+      "hint": "Official Anthropic API. Requires ANTHROPIC_API_KEY."
+    },
+    "openai": {
+      "label": "OpenAI — GPT-4o",
+      "hint": "Official OpenAI API. Requires OPENAI_API_KEY."
+    },
+    "openrouter": {
+      "label": "OpenRouter",
+      "hint": "Aggregator. Requires OPENROUTER_API_KEY."
+    },
+    "deepseek": {
+      "label": "DeepSeek",
+      "hint": "DeepSeek API. Requires DEEPSEEK_API_KEY."
+    },
+    "ollama": {
+      "label": "Ollama (local)",
+      "hint": "Local Ollama. No API key required — use any placeholder."
+    }
+  },
+  "common": {
+    "dismiss": "Dismiss",
+    "language": "Language"
+  }
+}

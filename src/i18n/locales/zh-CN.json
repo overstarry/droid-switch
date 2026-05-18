@@ -1,0 +1,114 @@
+{
+  "header": {
+    "subtitle": "管理 Factory CLI 提供方预设",
+    "factoryLabel": "Factory:",
+    "modelCount_other": "{{count}} 个模型",
+    "noFactorySettings": "未找到用户级 Factory 配置",
+    "loading": "加载中…"
+  },
+  "sidebar": {
+    "new": "+ 新建",
+    "templates": "模板",
+    "import": "导入",
+    "backups": "备份"
+  },
+  "empty": {
+    "hint": "从左侧选择一个预设,或新建一个。",
+    "subHint": "切换将更新你的用户级 Factory 配置,并保留一份备份。"
+  },
+  "toast": {
+    "saved": "已保存",
+    "created": "已创建",
+    "switched": "已切换",
+    "deleted": "已删除",
+    "imported_other": "已从 Factory 配置导入 {{count}} 个预设",
+    "importedNoChange": "没有可导入的新预设"
+  },
+  "details": {
+    "switchToThis": "切换到此预设",
+    "active": "当前",
+    "edit": "编辑",
+    "delete": "删除",
+    "provider": "提供方",
+    "displayName": "显示名称",
+    "baseUrl": "Base URL",
+    "apiKey": "API 密钥",
+    "maxOutputTokens": "最大输出 token 数",
+    "noImageSupport": "不支持图像",
+    "yes": "是",
+    "updated": "更新时间"
+  },
+  "list": {
+    "empty": "暂无预设。",
+    "emptyHint": "点击 \"新建\" 添加一个,或点击 \"导入\" 从你的 Factory 配置中拉取。",
+    "switch": "切换",
+    "delete": "删除"
+  },
+  "form": {
+    "label": "名称",
+    "labelPlaceholder": "我的 OpenAI",
+    "provider": "提供方",
+    "displayName": "显示名称",
+    "displayNamePlaceholder": "GPT-4o",
+    "modelId": "模型 ID",
+    "modelIdPlaceholder": "gpt-4o",
+    "baseUrl": "Base URL",
+    "baseUrlPlaceholder": "https://api.openai.com/v1",
+    "apiKey": "API 密钥(支持 ${ENV_VAR})",
+    "apiKeyPlaceholder": "${OPENAI_API_KEY}",
+    "maxOutputTokens": "最大输出 token 数(可选)",
+    "noImageSupport": "不支持图像",
+    "envSet": "已设置",
+    "envMissing": "未设置",
+    "cancel": "取消",
+    "save": "保存",
+    "create": "创建",
+    "errors": {
+      "labelRequired": "名称不能为空",
+      "modelRequired": "模型不能为空",
+      "displayNameRequired": "显示名称不能为空",
+      "baseUrlRequired": "Base URL 不能为空",
+      "apiKeyRequired": "API 密钥不能为空"
+    }
+  },
+  "confirm": {
+    "delete": "确定删除预设 \"{{label}}\" 吗?此操作不会修改当前激活的 Factory 配置。",
+    "restore": "确定从 {{filename}} 恢复当前激活的 Factory 配置吗?当前配置会先被备份。"
+  },
+  "dialog": {
+    "chooseTemplate": "选择一个模板",
+    "use": "使用",
+    "backups": "备份",
+    "loading": "加载中…",
+    "noBackups": "暂无备份。每次切换时会自动创建备份。",
+    "restore": "恢复",
+    "restoring": "恢复中…",
+    "bytes": "{{count}} 字节"
+  },
+  "presets": {
+    "anthropic": {
+      "label": "Anthropic — Claude Sonnet 4.6",
+      "hint": "Anthropic 官方 API。需要 ANTHROPIC_API_KEY。"
+    },
+    "openai": {
+      "label": "OpenAI — GPT-4o",
+      "hint": "OpenAI 官方 API。需要 OPENAI_API_KEY。"
+    },
+    "openrouter": {
+      "label": "OpenRouter",
+      "hint": "聚合服务。需要 OPENROUTER_API_KEY。"
+    },
+    "deepseek": {
+      "label": "DeepSeek",
+      "hint": "DeepSeek API。需要 DEEPSEEK_API_KEY。"
+    },
+    "ollama": {
+      "label": "Ollama(本地)",
+      "hint": "本地 Ollama。无需 API 密钥 —— 任意占位字符串即可。"
+    }
+  },
+  "common": {
+    "dismiss": "关闭",
+    "language": "语言"
+  }
+}
