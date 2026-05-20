@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { AlertCircle, Check } from "lucide-react";
 import type { CustomModel, Preset, ProviderKind } from "@/types";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -104,123 +105,147 @@ export function ProviderForm({ initial, onSubmit, onCancel, submitting }: Props)
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex h-full flex-col">
-      <div className="flex-1 space-y-3 overflow-y-auto pr-1">
-        <div>
-          <Label>{t("form.label")}</Label>
-          <Input
-            value={label}
-            onChange={(e) => setLabel(e.target.value)}
-            placeholder={t("form.labelPlaceholder")}
-            autoFocus
-          />
+    <form onSubmit={handleSubmit} className="flex h-full flex-col gap-5">
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0">
+          <h2 className="text-[18px] font-semibold leading-tight text-foreground">
+            {initial ? t("form.titleEdit") : t("form.titleNew")}
+          </h2>
+          <p className="mt-0.5 text-xs text-muted-foreground">{t("form.subtitle")}</p>
         </div>
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <Label>{t("form.provider")}</Label>
-            <Select
-              value={model.provider}
-              onChange={(e) => update("provider", e.target.value as ProviderKind)}
-            >
-              {PROVIDERS.map((p) => (
-                <option key={p} value={p}>
-                  {p}
-                </option>
-              ))}
-            </Select>
-          </div>
-          <div>
-            <Label>{t("form.displayName")}</Label>
-            <Input
-              value={model.displayName}
-              onChange={(e) => update("displayName", e.target.value)}
-              placeholder={t("form.displayNamePlaceholder")}
-            />
-          </div>
-        </div>
-        <div>
-          <Label>{t("form.modelId")}</Label>
-          <Input
-            value={model.model}
-            onChange={(e) => update("model", e.target.value)}
-            placeholder={t("form.modelIdPlaceholder")}
-          />
-        </div>
-        <div>
-          <Label>{t("form.baseUrl")}</Label>
-          <Input
-            value={model.baseUrl}
-            onChange={(e) => update("baseUrl", e.target.value)}
-            placeholder={t("form.baseUrlPlaceholder")}
-          />
-        </div>
-        <div>
-          <Label>{t("form.apiKey")}</Label>
-          <Input
-            value={model.apiKey}
-            onChange={(e) => update("apiKey", e.target.value)}
-            placeholder={t("form.apiKeyPlaceholder")}
-          />
-          {envVars.length > 0 && (
-            <div className="mt-1 flex flex-wrap gap-1.5">
-              {envVars.map((v) => (
-                <span
-                  key={v}
-                  className={
-                    envStatus[v]
-                      ? "inline-flex items-center gap-1 rounded bg-emerald-500/10 px-1.5 py-0.5 text-[11px] text-emerald-600 dark:text-emerald-400"
-                      : "inline-flex items-center gap-1 rounded bg-destructive/10 px-1.5 py-0.5 text-[11px] text-destructive"
-                  }
-                >
-                  <span className="size-1.5 rounded-full bg-current" />
-                  {v} {envStatus[v] ? t("form.envSet") : t("form.envMissing")}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <Label>{t("form.maxOutputTokens")}</Label>
-            <Input
-              type="number"
-              min={0}
-              value={model.maxOutputTokens ?? ""}
-              onChange={(e) =>
-                update(
-                  "maxOutputTokens",
-                  e.target.value ? Number(e.target.value) : undefined
-                )
-              }
-              placeholder=""
-            />
-          </div>
-          <div className="flex items-end">
-            <label className="flex items-center gap-2 text-xs text-muted-foreground">
-              <input
-                type="checkbox"
-                checked={!!model.noImageSupport}
-                onChange={(e) => update("noImageSupport", e.target.checked || undefined)}
-              />
-              {t("form.noImageSupport")}
-            </label>
-          </div>
+        <div className="flex shrink-0 items-center gap-2">
+          {onCancel ? (
+            <Button type="button" variant="ghost" onClick={onCancel}>
+              {t("form.cancel")}
+            </Button>
+          ) : null}
+          <Button type="submit" disabled={submitting}>
+            <Check className="size-3.5" />
+            {initial ? t("form.save") : t("form.create")}
+          </Button>
         </div>
       </div>
-      {error ? (
-        <div className="mt-3 rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-xs text-destructive">
-          {error}
+
+      <div className="flex-1 overflow-y-auto">
+        <div className="rounded-xl border border-border bg-surface-elevated p-6">
+          {error ? (
+            <div className="mb-4 flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive-soft px-3 py-2 text-xs font-medium text-destructive">
+              <AlertCircle className="mt-0.5 size-3.5 shrink-0" />
+              <span>{error}</span>
+            </div>
+          ) : null}
+
+          <div className="space-y-4">
+            <div>
+              <Label>{t("form.label")}</Label>
+              <Input
+                value={label}
+                onChange={(e) => setLabel(e.target.value)}
+                placeholder={t("form.labelPlaceholder")}
+                autoFocus
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label>{t("form.provider")}</Label>
+                <Select
+                  value={model.provider}
+                  onChange={(e) => update("provider", e.target.value as ProviderKind)}
+                >
+                  {PROVIDERS.map((p) => (
+                    <option key={p} value={p}>
+                      {p}
+                    </option>
+                  ))}
+                </Select>
+              </div>
+              <div>
+                <Label>{t("form.displayName")}</Label>
+                <Input
+                  value={model.displayName}
+                  onChange={(e) => update("displayName", e.target.value)}
+                  placeholder={t("form.displayNamePlaceholder")}
+                />
+              </div>
+            </div>
+            <div>
+              <Label>{t("form.modelId")}</Label>
+              <Input
+                mono
+                value={model.model}
+                onChange={(e) => update("model", e.target.value)}
+                placeholder={t("form.modelIdPlaceholder")}
+              />
+            </div>
+            <div>
+              <Label>{t("form.baseUrl")}</Label>
+              <Input
+                mono
+                value={model.baseUrl}
+                onChange={(e) => update("baseUrl", e.target.value)}
+                placeholder={t("form.baseUrlPlaceholder")}
+              />
+            </div>
+            <div>
+              <Label>{t("form.apiKey")}</Label>
+              <Input
+                mono
+                value={model.apiKey}
+                onChange={(e) => update("apiKey", e.target.value)}
+                placeholder={t("form.apiKeyPlaceholder")}
+              />
+              {envVars.length > 0 && (
+                <div className="mt-2 flex flex-wrap gap-1.5">
+                  {envVars.map((v) => {
+                    const ok = envStatus[v];
+                    return (
+                      <span
+                        key={v}
+                        className={
+                          ok
+                            ? "inline-flex items-center gap-1 rounded bg-success-soft px-1.5 py-0.5 font-mono text-[10px] font-medium text-success"
+                            : "inline-flex items-center gap-1 rounded bg-destructive-soft px-1.5 py-0.5 font-mono text-[10px] font-medium text-destructive"
+                        }
+                      >
+                        {ok ? <Check className="size-2.5" /> : <AlertCircle className="size-2.5" />}
+                        {v} {ok ? t("form.envSet") : t("form.envMissing")}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label>{t("form.maxOutputTokens")}</Label>
+                <Input
+                  mono
+                  type="number"
+                  min={0}
+                  value={model.maxOutputTokens ?? ""}
+                  onChange={(e) =>
+                    update(
+                      "maxOutputTokens",
+                      e.target.value ? Number(e.target.value) : undefined
+                    )
+                  }
+                  placeholder=""
+                />
+              </div>
+              <div className="flex items-end">
+                <label className="flex h-8 items-center gap-2 text-xs text-foreground">
+                  <input
+                    type="checkbox"
+                    className="size-3.5 accent-accent"
+                    checked={!!model.noImageSupport}
+                    onChange={(e) => update("noImageSupport", e.target.checked || undefined)}
+                  />
+                  {t("form.noImageSupport")}
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
-      ) : null}
-      <div className="mt-3 flex items-center justify-end gap-2 border-t border-border pt-3">
-        {onCancel ? (
-          <Button type="button" variant="ghost" onClick={onCancel}>
-            {t("form.cancel")}
-          </Button>
-        ) : null}
-        <Button type="submit" disabled={submitting}>
-          {initial ? t("form.save") : t("form.create")}
-        </Button>
       </div>
     </form>
   );

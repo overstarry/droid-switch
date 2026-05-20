@@ -8,9 +8,11 @@
   },
   "sidebar": {
     "new": "+ 新建",
+    "newShort": "新建",
     "templates": "模板",
     "import": "导入",
-    "backups": "备份"
+    "backups": "备份",
+    "presetsLabel": "预设"
   },
   "empty": {
     "hint": "从左侧选择一个预设,或新建一个。",
@@ -25,12 +27,17 @@
     "importedNoChange": "没有可导入的新预设"
   },
   "details": {
-    "switchToThis": "切换到此预设",
+    "switchToThis": "切换",
     "active": "当前",
+    "activeHint": "正在被 Factory CLI 使用",
+    "inactiveHint": "未激活",
     "edit": "编辑",
     "delete": "删除",
+    "configuration": "配置",
+    "configurationHint": "当前预设的只读快照",
     "provider": "提供方",
     "displayName": "显示名称",
+    "modelId": "模型 ID",
     "baseUrl": "Base URL",
     "apiKey": "API 密钥",
     "maxOutputTokens": "最大输出 token 数",
@@ -45,6 +52,9 @@
     "delete": "删除"
   },
   "form": {
+    "titleEdit": "编辑预设",
+    "titleNew": "新建预设",
+    "subtitle": "配置提供方、凭证与调优参数",
     "label": "名称",
     "labelPlaceholder": "我的 OpenAI",
     "provider": "提供方",
@@ -77,8 +87,10 @@
   },
   "dialog": {
     "chooseTemplate": "选择一个模板",
+    "chooseTemplateHint": "从预设配置开始",
     "use": "使用",
     "backups": "备份",
+    "backupsHint": "恢复一个 factory.json 历史快照",
     "loading": "加载中…",
     "noBackups": "暂无备份。每次切换时会自动创建备份。",
     "restore": "恢复",

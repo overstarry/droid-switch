@@ -9,9 +9,11 @@
   },
   "sidebar": {
     "new": "+ New",
+    "newShort": "New",
     "templates": "Templates",
     "import": "Import",
-    "backups": "Backups"
+    "backups": "Backups",
+    "presetsLabel": "Presets"
   },
   "empty": {
     "hint": "Select a preset on the left, or create a new one.",
@@ -27,17 +29,22 @@
     "importedNoChange": "No new presets to import"
   },
   "details": {
-    "switchToThis": "Switch to this",
-    "active": "ACTIVE",
+    "switchToThis": "Switch",
+    "active": "Active",
+    "activeHint": "Currently used by Factory CLI",
+    "inactiveHint": "Not the active preset",
     "edit": "Edit",
     "delete": "Delete",
+    "configuration": "Configuration",
+    "configurationHint": "Read-only snapshot of this preset's values",
     "provider": "Provider",
     "displayName": "Display name",
+    "modelId": "Model ID",
     "baseUrl": "Base URL",
     "apiKey": "API key",
     "maxOutputTokens": "Max output tokens",
     "noImageSupport": "No image support",
-    "yes": "yes",
+    "yes": "Yes",
     "updated": "Updated"
   },
   "list": {
@@ -47,6 +54,9 @@
     "delete": "Delete"
   },
   "form": {
+    "titleEdit": "Edit preset",
+    "titleNew": "New preset",
+    "subtitle": "Configure provider, credentials and tuning",
     "label": "Label",
     "labelPlaceholder": "My OpenAI",
     "provider": "Provider",
@@ -79,8 +89,10 @@
   },
   "dialog": {
     "chooseTemplate": "Choose a template",
+    "chooseTemplateHint": "Start from a preset configuration",
     "use": "Use",
     "backups": "Backups",
+    "backupsHint": "Restore a previous factory.json snapshot",
     "loading": "Loading…",
     "noBackups": "No backups yet. Backups are created on each switch.",
     "restore": "Restore",
