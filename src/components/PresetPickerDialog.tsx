@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { Bot, HardDrive, Route, Search, Sparkles, type LucideIcon } from "lucide-react";
 import { Dialog } from "@/components/ui/Dialog";
 import { Button } from "@/components/ui/Button";
 import { presetTemplates, type PresetTemplate } from "@/lib/presets";
@@ -9,30 +10,50 @@ interface Props {
   onPick: (template: PresetTemplate) => void;
 }
 
+const ICONS: Record<string, LucideIcon> = {
+  anthropic: Sparkles,
+  openai: Bot,
+  openrouter: Route,
+  deepseek: Search,
+  ollama: HardDrive,
+};
+
 export function PresetPickerDialog({ open, onClose, onPick }: Props) {
   const { t } = useTranslation();
   return (
-    <Dialog open={open} onClose={onClose} title={t("dialog.chooseTemplate")} width="max-w-md">
-      <ul className="space-y-2">
-        {presetTemplates.map((tpl) => (
-          <li
-            key={tpl.id}
-            className="rounded-md border border-border p-3 transition-colors hover:border-accent/60"
-          >
-            <div className="flex items-start justify-between gap-2">
+    <Dialog
+      open={open}
+      onClose={onClose}
+      title={t("dialog.chooseTemplate")}
+      description={t("dialog.chooseTemplateHint")}
+      width="max-w-md"
+    >
+      <ul className="flex flex-col gap-0.5 p-1">
+        {presetTemplates.map((tpl) => {
+          const Icon = ICONS[tpl.id] ?? Sparkles;
+          return (
+            <li
+              key={tpl.id}
+              className="flex items-center gap-3 rounded-lg px-2.5 py-2 transition-colors hover:bg-surface"
+            >
+              <div className="flex size-8 shrink-0 items-center justify-center rounded-md border border-border bg-surface text-foreground">
+                <Icon className="size-4" />
+              </div>
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-semibold">{t(tpl.labelKey)}</p>
-                <p className="mt-0.5 text-xs text-muted-foreground">{t(tpl.hintKey)}</p>
-                <p className="mt-1 truncate text-[11px] text-muted-foreground/70">
+                <div className="flex items-center gap-2">
+                  <p className="truncate text-[13px] font-medium text-foreground">{t(tpl.labelKey)}</p>
+                </div>
+                <p className="truncate text-[11px] text-muted-foreground">{t(tpl.hintKey)}</p>
+                <p className="truncate font-mono text-[11px] text-muted-foreground/80">
                   {tpl.customModel.baseUrl}
                 </p>
               </div>
-              <Button size="sm" onClick={() => onPick(tpl)}>
+              <Button size="sm" onClick={() => onPick(tpl)} className="shrink-0">
                 {t("dialog.use")}
               </Button>
-            </div>
-          </li>
-        ))}
+            </li>
+          );
+        })}
       </ul>
     </Dialog>
   );

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Archive, Loader2 } from "lucide-react";
 import { Dialog } from "@/components/ui/Dialog";
 import { Button } from "@/components/ui/Button";
 import type { BackupInfo } from "@/types";
@@ -9,6 +10,12 @@ interface Props {
   open: boolean;
   onClose: () => void;
   onRestored?: () => void;
+}
+
+function formatBytes(n: number): string {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+  return `${(n / (1024 * 1024)).toFixed(1)} MB`;
 }
 
 export function BackupDialog({ open, onClose, onRestored }: Props) {
@@ -51,39 +58,59 @@ export function BackupDialog({ open, onClose, onRestored }: Props) {
   };
 
   return (
-    <Dialog open={open} onClose={onClose} title={t("dialog.backups")} width="max-w-md">
-      {loading ? (
-        <div className="text-xs text-muted-foreground">{t("dialog.loading")}</div>
-      ) : backups.length === 0 ? (
-        <div className="text-xs text-muted-foreground">{t("dialog.noBackups")}</div>
-      ) : (
-        <ul className="space-y-1.5">
-          {backups.map((b) => (
-            <li
-              key={b.filename}
-              className="flex items-center justify-between gap-3 rounded-md border border-border px-3 py-2 text-xs"
-            >
-              <div className="min-w-0">
-                <p className="truncate font-mono">{b.filename}</p>
-                <p className="text-muted-foreground">{t("dialog.bytes", { count: b.size })}</p>
-              </div>
-              <Button
-                size="sm"
-                variant="outline"
-                disabled={!!busyFilename}
-                onClick={() => handleRestore(b.filename)}
+    <Dialog
+      open={open}
+      onClose={onClose}
+      title={t("dialog.backups")}
+      description={t("dialog.backupsHint")}
+      width="max-w-md"
+    >
+      <div className="px-1 py-1">
+        {loading ? (
+          <div className="px-3 py-8 text-center text-xs text-muted-foreground">{t("dialog.loading")}</div>
+        ) : backups.length === 0 ? (
+          <div className="flex flex-col items-center gap-2 px-3 py-8 text-center">
+            <div className="flex size-10 items-center justify-center rounded-lg border border-border bg-surface">
+              <Archive className="size-4 text-muted-foreground" />
+            </div>
+            <p className="text-xs text-muted-foreground">{t("dialog.noBackups")}</p>
+          </div>
+        ) : (
+          <ul className="flex flex-col">
+            {backups.map((b) => (
+              <li
+                key={b.filename}
+                className="flex items-center justify-between gap-3 rounded-md px-3 py-2"
               >
-                {busyFilename === b.filename ? t("dialog.restoring") : t("dialog.restore")}
-              </Button>
-            </li>
-          ))}
-        </ul>
-      )}
-      {error ? (
-        <div className="mt-3 rounded-md border border-destructive/40 bg-destructive/10 px-3 py-2 text-xs text-destructive">
-          {error}
-        </div>
-      ) : null}
+                <div className="min-w-0">
+                  <p className="truncate font-mono text-xs text-foreground">{b.filename}</p>
+                  <p className="text-[11px] text-muted-foreground">{formatBytes(b.size)}</p>
+                </div>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  disabled={!!busyFilename}
+                  onClick={() => handleRestore(b.filename)}
+                >
+                  {busyFilename === b.filename ? (
+                    <>
+                      <Loader2 className="size-3 animate-spin" />
+                      {t("dialog.restoring")}
+                    </>
+                  ) : (
+                    t("dialog.restore")
+                  )}
+                </Button>
+              </li>
+            ))}
+          </ul>
+        )}
+        {error ? (
+          <div className="mx-2 mt-2 rounded-md border border-destructive/40 bg-destructive-soft px-3 py-2 text-xs text-destructive">
+            {error}
+          </div>
+        ) : null}
+      </div>
     </Dialog>
   );
 }
