@@ -1,94 +1,83 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-label="Droid Switch app icon">
   <defs>
-    <linearGradient id="bg" x1="120" y1="96" x2="884" y2="928" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#15354b"/>
-      <stop offset="0.44" stop-color="#0d1825"/>
-      <stop offset="1" stop-color="#070b12"/>
+    <linearGradient id="bg" x1="200" y1="120" x2="824" y2="904" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1f4a6b"/>
+      <stop offset="0.5" stop-color="#0f1e2e"/>
+      <stop offset="1" stop-color="#070b14"/>
     </linearGradient>
-    <radialGradient id="glow" cx="284" cy="226" r="700" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#46f4de" stop-opacity="0.42"/>
-      <stop offset="0.34" stop-color="#1ba7c5" stop-opacity="0.18"/>
+    <radialGradient id="topGlow" cx="380" cy="280" r="560" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5be0d4" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#1ba7c5" stop-opacity="0.12"/>
       <stop offset="1" stop-color="#061017" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="shell" x1="266" y1="286" x2="738" y2="760" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#21364d"/>
-      <stop offset="0.58" stop-color="#111d2c"/>
-      <stop offset="1" stop-color="#0b1118"/>
+    <radialGradient id="bottomGlow" cx="700" cy="780" r="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffb547" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#070b14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="cyan" x1="280" y1="380" x2="780" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a8fff7"/>
+      <stop offset="1" stop-color="#3cd9c7"/>
     </linearGradient>
-    <linearGradient id="face" x1="296" y1="336" x2="736" y2="682" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#0f2231"/>
-      <stop offset="1" stop-color="#09131b"/>
+    <linearGradient id="amber" x1="780" y1="644" x2="280" y2="644" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffd070"/>
+      <stop offset="1" stop-color="#ff9a32"/>
     </linearGradient>
-    <linearGradient id="cyan" x1="242" y1="324" x2="768" y2="592" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#8cfffb"/>
-      <stop offset="0.55" stop-color="#22dccf"/>
-      <stop offset="1" stop-color="#0aa4c1"/>
-    </linearGradient>
-    <linearGradient id="amber" x1="734" y1="494" x2="282" y2="760" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ffd777"/>
-      <stop offset="1" stop-color="#ff9d2f"/>
-    </linearGradient>
-    <linearGradient id="rim" x1="108" y1="108" x2="912" y2="912" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#7afcf2" stop-opacity="0.72"/>
-      <stop offset="0.48" stop-color="#205d72" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#04070d" stop-opacity="0.88"/>
-    </linearGradient>
-    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="160%">
-      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#000000" flood-opacity="0.38"/>
+    <filter id="cyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feFlood flood-color="#28ecdd" flood-opacity="0.55"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
-    <filter id="cyanGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#28ecdd" flood-opacity="0.66"/>
+    <filter id="amberGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feFlood flood-color="#ffb647" flood-opacity="0.55"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
-    <filter id="amberGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#ffb647" flood-opacity="0.66"/>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="6"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.45"/></feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
     <clipPath id="frame">
-      <rect x="64" y="64" width="896" height="896" rx="214"/>
+      <rect x="100" y="100" width="824" height="824" rx="186" ry="186"/>
     </clipPath>
   </defs>
 
   <g clip-path="url(#frame)">
-    <rect x="64" y="64" width="896" height="896" rx="214" fill="url(#bg)"/>
-    <rect x="64" y="64" width="896" height="896" rx="214" fill="url(#glow)"/>
-    <path d="M84 820C244 670 412 632 596 668C726 692 836 756 940 868V960H64V860C70 846 76 834 84 820Z" fill="#0d2432" opacity="0.54"/>
-    <path d="M102 210C260 112 500 86 734 144C812 164 880 196 946 236V64H64V282C74 256 86 232 102 210Z" fill="#335873" opacity="0.22"/>
+    <rect x="100" y="100" width="824" height="824" rx="186" ry="186" fill="url(#bg)"/>
+    <rect x="100" y="100" width="824" height="824" rx="186" ry="186" fill="url(#topGlow)"/>
+    <rect x="100" y="100" width="824" height="824" rx="186" ry="186" fill="url(#bottomGlow)"/>
   </g>
 
-  <rect x="72" y="72" width="880" height="880" rx="206" fill="none" stroke="url(#rim)" stroke-width="12"/>
-  <rect x="96" y="96" width="832" height="832" rx="184" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="4"/>
-
-  <g filter="url(#softShadow)">
-    <path d="M384 292L334 222" fill="none" stroke="#36536b" stroke-width="28" stroke-linecap="round"/>
-    <path d="M640 292L690 222" fill="none" stroke="#36536b" stroke-width="28" stroke-linecap="round"/>
-    <circle cx="326" cy="210" r="24" fill="url(#cyan)"/>
-    <circle cx="698" cy="210" r="24" fill="url(#amber)"/>
-
-    <rect x="220" y="280" width="584" height="468" rx="176" fill="url(#shell)"/>
-    <rect x="260" y="320" width="504" height="388" rx="144" fill="url(#face)" stroke="#78fff4" stroke-opacity="0.22" stroke-width="8"/>
-    <path d="M320 380C404 344 620 344 704 380" fill="none" stroke="#ffffff" stroke-opacity="0.11" stroke-width="10" stroke-linecap="round"/>
-  </g>
+  <rect x="106" y="106" width="812" height="812" rx="180" ry="180"
+        fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="2"/>
 
   <g filter="url(#cyanGlow)">
-    <path d="M242 556C322 466 420 422 528 422H620" fill="none" stroke="#132232" stroke-width="84" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M242 556C322 466 420 422 528 422H620" fill="none" stroke="url(#cyan)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M620 352L746 422L620 492" fill="none" stroke="#132232" stroke-width="84" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M620 352L746 422L620 492" fill="none" stroke="url(#cyan)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 280 380 L 660 380"
+          fill="none" stroke="url(#cyan)" stroke-width="64"
+          stroke-linecap="round"/>
+    <path d="M 620 296 L 760 380 L 620 464"
+          fill="none" stroke="url(#cyan)" stroke-width="64"
+          stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 
   <g filter="url(#amberGlow)">
-    <path d="M782 556C702 646 604 690 496 690H404" fill="none" stroke="#132232" stroke-width="84" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M782 556C702 646 604 690 496 690H404" fill="none" stroke="url(#amber)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M404 620L278 690L404 760" fill="none" stroke="#132232" stroke-width="84" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M404 620L278 690L404 760" fill="none" stroke="url(#amber)" stroke-width="36" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 744 644 L 364 644"
+          fill="none" stroke="url(#amber)" stroke-width="64"
+          stroke-linecap="round"/>
+    <path d="M 404 560 L 264 644 L 404 728"
+          fill="none" stroke="url(#amber)" stroke-width="64"
+          stroke-linecap="round" stroke-linejoin="round"/>
   </g>
-
-  <g>
-    <circle cx="242" cy="556" r="34" fill="#0c131b" stroke="url(#cyan)" stroke-width="18"/>
-    <circle cx="782" cy="556" r="34" fill="#0c131b" stroke="url(#amber)" stroke-width="18"/>
-    <rect x="360" y="476" width="120" height="52" rx="26" fill="#7afef5" opacity="0.94"/>
-    <rect x="544" y="476" width="120" height="52" rx="26" fill="#7afef5" opacity="0.94"/>
-    <rect x="442" y="582" width="140" height="24" rx="12" fill="#89fff7" opacity="0.72"/>
-  </g>
-
-  <path d="M182 848C286 902 408 924 536 910C670 894 792 836 888 748" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="10" stroke-linecap="round"/>
 </svg>
