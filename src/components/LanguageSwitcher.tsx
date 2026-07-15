@@ -13,7 +13,7 @@ export function LanguageSwitcher() {
 
   return (
     <div
-      className="inline-flex items-center gap-1 rounded-md border border-border bg-surface-elevated px-1.5 py-1"
+      className="inline-flex h-[34px] items-center gap-1 border border-border bg-surface-elevated px-1.5"
       aria-label={t("common.language")}
     >
       <Languages className="size-3 text-muted-foreground" />
@@ -24,7 +24,7 @@ export function LanguageSwitcher() {
             key={l.code}
             onClick={() => i18n.changeLanguage(l.code)}
             className={cn(
-              "rounded px-1.5 py-0.5 text-[11px] font-medium transition-colors",
+              "px-1.5 py-0.5 font-mono text-[10px] font-semibold tracking-[0.08em] transition-colors",
               active
                 ? "bg-accent text-accent-foreground"
                 : "text-muted-foreground hover:text-foreground"

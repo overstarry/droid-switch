@@ -12,67 +12,71 @@ interface Props {
   onDelete: () => void;
 }
 
+function providerLabel(provider: Preset["customModel"]["provider"]): string {
+  if (provider === "anthropic") return "ANTHROPIC";
+  if (provider === "openai") return "OPENAI";
+  return "GENERIC";
+}
+
 export function ProviderCard({ preset, active, selected, onSelect, onSwitch, onDelete }: Props) {
   const { t } = useTranslation();
-  const m = preset.customModel;
+  const model = preset.customModel;
+
   return (
     <div
       onClick={onSelect}
       className={cn(
-        "group relative cursor-pointer rounded-lg border px-3 py-3 transition-colors",
-        active
-          ? "border-border bg-surface-elevated"
-          : "border-border bg-transparent hover:bg-surface-elevated/50",
-        selected && !active && "ring-1 ring-accent/40",
-        active && "border-l-2 border-l-accent pl-[10px]"
+        "group relative mt-3 min-h-[84px] cursor-pointer overflow-hidden border px-3 py-3 transition-colors",
+        active ? "border-border-strong bg-surface-elevated" : "border-border bg-surface hover:border-border-strong hover:bg-surface-elevated",
+        selected && !active && "border-accent/60",
+        selected && "ring-1 ring-accent/20"
       )}
     >
-      <div className="flex items-start justify-between gap-2">
+      {active ? <span className="absolute inset-y-0 left-0 w-[3px] bg-accent" /> : null}
+      <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-1.5">
-            <span className="truncate text-[13px] font-medium text-foreground">{preset.label}</span>
+          <div className="flex min-w-0 items-center gap-2">
+            <span className={cn("size-1.5 shrink-0 rounded-full", active ? "bg-success" : "bg-muted-foreground")} />
+            <span className="truncate text-[12px] font-semibold text-foreground">{preset.label}</span>
             {active ? (
-              <span className="inline-flex items-center gap-0.5 rounded bg-accent-soft px-1.5 py-0.5 text-[10px] font-semibold text-accent">
+              <span className="inline-flex shrink-0 items-center gap-1 bg-success-soft px-1.5 py-0.5 font-mono text-[8px] font-bold tracking-[0.08em] text-success">
                 <Check className="size-2.5" />
                 {t("details.active")}
               </span>
             ) : null}
           </div>
+          <p className="mt-2 truncate font-mono text-[9px] font-semibold tracking-[0.08em] text-muted-foreground">
+            {providerLabel(model.provider)}
+          </p>
+          <p className="mt-1 truncate font-mono text-[10px] text-muted-foreground">{model.model}</p>
         </div>
-        <span className="shrink-0 rounded border border-border bg-surface px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground">
-          {m.provider === "anthropic" ? "Anthropic" : m.provider === "openai" ? "OpenAI" : "Generic"}
-        </span>
+        <span className="mt-0.5 font-mono text-[9px] text-muted-foreground/60">›</span>
       </div>
-      <div className="mt-1.5 truncate font-mono text-[11px] leading-snug text-muted-foreground">
-        {m.model}
-      </div>
-      <div className="truncate font-mono text-[11px] leading-snug text-muted-foreground/80">
-        {m.baseUrl}
-      </div>
-      <div className="mt-2 flex items-center justify-end gap-0.5 opacity-0 transition-opacity group-hover:opacity-100">
+
+      <div className="absolute bottom-2 right-2 flex items-center gap-1 border border-border bg-surface-elevated px-1 py-1 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
         {!active ? (
           <button
-            onClick={(e) => {
-              e.stopPropagation();
+            onClick={(event) => {
+              event.stopPropagation();
               onSwitch();
             }}
-            className="inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground hover:bg-surface hover:text-foreground"
+            className="flex size-6 items-center justify-center text-muted-foreground transition-colors hover:bg-accent-soft hover:text-accent"
             title={t("list.switch")}
+            aria-label={t("list.switch")}
           >
             <ArrowRightLeft className="size-3" />
-            {t("list.switch")}
           </button>
         ) : null}
         <button
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={(event) => {
+            event.stopPropagation();
             onDelete();
           }}
-          className="inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground hover:bg-destructive-soft hover:text-destructive"
+          className="flex size-6 items-center justify-center text-muted-foreground transition-colors hover:bg-destructive-soft hover:text-destructive"
           title={t("list.delete")}
+          aria-label={t("list.delete")}
         >
           <Trash2 className="size-3" />
-          {t("list.delete")}
         </button>
       </div>
     </div>

@@ -18,7 +18,7 @@ export function ProviderList({ presets, activeId, selectedId, onSelect, onSwitch
     return (
       <div className="flex h-full items-center justify-center px-4 py-8 text-center">
         <div className="flex flex-col items-center gap-2 text-muted-foreground">
-          <div className="flex size-10 items-center justify-center rounded-lg border border-border bg-surface">
+          <div className="flex size-10 items-center justify-center border border-border bg-surface-elevated">
             <Inbox className="size-4" />
           </div>
           <p className="text-xs font-medium text-foreground">{t("list.empty")}</p>
@@ -28,7 +28,7 @@ export function ProviderList({ presets, activeId, selectedId, onSelect, onSwitch
     );
   }
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col">
       {presets.map((p) => (
         <ProviderCard
           key={p.id}

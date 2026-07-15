@@ -4,54 +4,28 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --surface: 240 6% 98%;
-    --surface-elevated: 0 0% 100%;
-    --card: 240 6% 99%;
-    --card-foreground: 240 10% 9%;
-    --foreground: 240 10% 9%;
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
-    --primary: 240 10% 9%;
-    --primary-foreground: 0 0% 100%;
-    --accent: 234 70% 60%;
-    --accent-foreground: 0 0% 100%;
-    --accent-soft: 234 70% 96%;
-    --destructive: 0 72% 51%;
-    --destructive-soft: 0 86% 95%;
-    --destructive-foreground: 0 0% 100%;
-    --success: 152 60% 38%;
-    --success-soft: 142 76% 92%;
-    --success-foreground: 0 0% 100%;
-    --border: 240 6% 90%;
-    --border-strong: 240 6% 82%;
-    --radius: 0.5rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: 240 6% 7%;
-      --surface: 240 5% 10%;
-      --surface-elevated: 240 5% 13%;
-      --card: 240 5% 11%;
-      --card-foreground: 0 0% 96%;
-      --foreground: 0 0% 96%;
-      --muted: 240 5% 14%;
-      --muted-foreground: 240 5% 65%;
-      --primary: 0 0% 96%;
-      --primary-foreground: 240 10% 9%;
-      --accent: 234 80% 68%;
-      --accent-foreground: 0 0% 100%;
-      --accent-soft: 234 60% 18%;
-      --destructive: 0 70% 60%;
-      --destructive-soft: 0 50% 18%;
-      --destructive-foreground: 0 0% 100%;
-      --success: 152 60% 50%;
-      --success-soft: 152 50% 14%;
-      --success-foreground: 0 0% 100%;
-      --border: 240 5% 18%;
-      --border-strong: 240 5% 26%;
-    }
+    --background: 210 30% 6%;
+    --surface: 212 33% 9%;
+    --surface-elevated: 213 34% 11%;
+    --card: 213 34% 11%;
+    --card-foreground: 210 33% 97%;
+    --foreground: 210 33% 97%;
+    --muted: 213 25% 14%;
+    --muted-foreground: 213 14% 61%;
+    --primary: 210 33% 97%;
+    --primary-foreground: 210 30% 6%;
+    --accent: 194 100% 67%;
+    --accent-foreground: 210 30% 6%;
+    --accent-soft: 198 58% 20%;
+    --destructive: 353 100% 71%;
+    --destructive-soft: 345 36% 20%;
+    --destructive-foreground: 210 33% 97%;
+    --success: 148 72% 64%;
+    --success-soft: 151 53% 15%;
+    --success-foreground: 210 30% 6%;
+    --border: 212 26% 20%;
+    --border-strong: 205 29% 31%;
+    --radius: 0px;
   }
 
   html,
@@ -62,7 +36,8 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color-scheme: dark;
+    font-family: "Geist", "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-feature-settings: "cv11", "ss01", "ss03";
   }
 
@@ -71,6 +46,11 @@
   pre,
   samp,
   .font-mono {
-    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    font-family: "Geist Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.3);
+    color: hsl(var(--foreground));
   }
 }

@@ -105,10 +105,11 @@ export function ProviderForm({ initial, onSubmit, onCancel, submitting }: Props)
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex h-full flex-col gap-5">
+    <form onSubmit={handleSubmit} className="flex h-full flex-col gap-7">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <h2 className="text-[18px] font-semibold leading-tight text-foreground">
+          <p className="font-mono text-[10px] font-semibold tracking-[0.12em] text-accent">CONFIGURATION EDITOR</p>
+          <h2 className="mt-2 text-[22px] font-semibold leading-tight tracking-[-0.03em] text-foreground">
             {initial ? t("form.titleEdit") : t("form.titleNew")}
           </h2>
           <p className="mt-0.5 text-xs text-muted-foreground">{t("form.subtitle")}</p>
@@ -127,15 +128,15 @@ export function ProviderForm({ initial, onSubmit, onCancel, submitting }: Props)
       </div>
 
       <div className="flex-1 overflow-y-auto">
-        <div className="rounded-xl border border-border bg-surface-elevated p-6">
+        <div className="border border-border bg-surface p-6">
           {error ? (
-            <div className="mb-4 flex items-start gap-2 rounded-md border border-destructive/40 bg-destructive-soft px-3 py-2 text-xs font-medium text-destructive">
+            <div className="mb-5 flex items-start gap-2 border border-destructive/40 bg-destructive-soft px-3 py-2 text-xs font-medium text-destructive">
               <AlertCircle className="mt-0.5 size-3.5 shrink-0" />
               <span>{error}</span>
             </div>
           ) : null}
 
-          <div className="space-y-4">
+          <div className="space-y-5">
             <div>
               <Label>{t("form.label")}</Label>
               <Input
@@ -203,8 +204,8 @@ export function ProviderForm({ initial, onSubmit, onCancel, submitting }: Props)
                         key={v}
                         className={
                           ok
-                            ? "inline-flex items-center gap-1 rounded bg-success-soft px-1.5 py-0.5 font-mono text-[10px] font-medium text-success"
-                            : "inline-flex items-center gap-1 rounded bg-destructive-soft px-1.5 py-0.5 font-mono text-[10px] font-medium text-destructive"
+                            ? "inline-flex items-center gap-1 bg-success-soft px-1.5 py-0.5 font-mono text-[10px] font-medium text-success"
+                            : "inline-flex items-center gap-1 bg-destructive-soft px-1.5 py-0.5 font-mono text-[10px] font-medium text-destructive"
                         }
                       >
                         {ok ? <Check className="size-2.5" /> : <AlertCircle className="size-2.5" />}

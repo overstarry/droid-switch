@@ -34,9 +34,9 @@ export function PresetPickerDialog({ open, onClose, onPick }: Props) {
           return (
             <li
               key={tpl.id}
-              className="flex items-center gap-3 rounded-lg px-2.5 py-2 transition-colors hover:bg-surface"
+              className="flex items-center gap-3 border border-transparent px-3 py-3 transition-colors hover:border-border hover:bg-surface"
             >
-              <div className="flex size-8 shrink-0 items-center justify-center rounded-md border border-border bg-surface text-foreground">
+              <div className="flex size-8 shrink-0 items-center justify-center border border-border bg-surface text-foreground">
                 <Icon className="size-4" />
               </div>
               <div className="min-w-0 flex-1">

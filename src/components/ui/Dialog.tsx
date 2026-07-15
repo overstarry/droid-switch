@@ -30,7 +30,7 @@ export function Dialog({ open, onClose, title, description, children, footer, wi
     >
       <div
         className={cn(
-          "relative w-full overflow-hidden rounded-xl border border-border bg-surface-elevated shadow-dialog",
+          "relative w-full overflow-hidden rounded-none border border-border-strong bg-surface-elevated shadow-dialog",
           width
         )}
         onMouseDown={(e) => e.stopPropagation()}
@@ -44,7 +44,7 @@ export function Dialog({ open, onClose, title, description, children, footer, wi
           </div>
           <button
             onClick={onClose}
-            className="flex size-7 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"
+            className="flex size-7 shrink-0 items-center justify-center rounded-none text-muted-foreground transition-colors hover:bg-surface hover:text-foreground"
             aria-label="Close"
           >
             <X className="size-3.5" />
